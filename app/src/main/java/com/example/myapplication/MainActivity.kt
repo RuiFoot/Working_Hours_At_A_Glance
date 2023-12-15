@@ -17,14 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-
-        // 버튼1 : 근무시간으로 가는 intent
-
-        binding.btnTo.setOnClickListener {
-            val intent2 = Intent(this@MainActivity, WorkActivity::class.java)
-            startActivity(intent2)
-        }
-
         // 버튼2 : 노동법 검색을 할 수 있는 액티비티로 가는 intent
         binding.btnCon.setOnClickListener {
             val intent3 = Intent(this@MainActivity, LawActivity::class.java)

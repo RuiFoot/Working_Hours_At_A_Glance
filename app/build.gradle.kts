@@ -42,6 +42,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     val nav_version = "2.7.4"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
@@ -64,4 +65,14 @@ dependencies {
 
     // Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
+
+    // Navigation Component
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Optional - Safe Args (Fragment 간 전달할 데이터를 안전하게 처리)
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+
+    // Optional - Dynamic Feature Module 지원
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 }

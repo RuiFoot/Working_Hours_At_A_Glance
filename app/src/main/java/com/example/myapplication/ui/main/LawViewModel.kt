@@ -1,32 +1,30 @@
 package com.example.myapplication.ui.main
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.myapplication.LawFAQ
 import com.example.myapplication.LawFAQDatabase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LawViewModel : ViewModel() {
+class LawViewModel(application: Application) : AndroidViewModel(application) {
     // TODO: Implement the ViewModel
 
-    private val _searchResults = MutableLiveData<List<String>>()
-    val searchResults: LiveData<List<String>> get() = _searchResults
+    private val lawFAQDatabase = LawFAQDatabase.getInstance(application)
 
-    /*
-    val lawFAQDatabase = LawFAQDatabase.getInstance(this)
+    private val _searchResults = MutableLiveData<List<LawFAQ>>()
+    val searchResults: LiveData<List<LawFAQ>> get() = _searchResults
 
-    lifecycleScope.launch(Dispatchers.IO) {
-        val faqList =lawFAQDatabase.lawFAQDao().getAllFAQs()
-        // 데이터 처리 또는 UI 업데이트 작업
-        for (faq in faqList){
-            Log.d("LawActivity","Question: ${faq.question}, Answer: ${faq.answer}")
-            break
+    fun search(searchMain: String, searchMiddle: String, editText: String) {
+        viewModelScope.launch {
+            val results = lawFAQDatabase.lawFAQDao().searchFAQs(searchMain, searchMiddle, editText)
+            _searchResults.value = results
         }
     }
 
-     */
-
+    fun getDataList(): List<DataModel> {
+        val searchResults = searchResults.value ?: emptyList()
+        return searchResults.map {
+            DataModel(it.main.toString(), it.middle.toString(), it.question.toString())
+        }
+    }
 }
