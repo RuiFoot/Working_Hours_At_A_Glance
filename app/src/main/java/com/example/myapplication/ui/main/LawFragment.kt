@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.myapplication.LawFAQ
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLawBinding
@@ -123,18 +125,17 @@ class LawFragment : Fragment() {
         listView.adapter = LawAdapter
 
         listView.setOnItemClickListener { _, _, position, _ ->
-            val selectedData = searchResults[position]  // Get the selected LawFAQ directly
+            val selectedItem = searchResults[position]  // Get the selected LawFAQ directly
+
+            // Log selectedData
+            Log.d("YourTag", "Selected Data: $selectedItem")
 
             // Create a bundle with data to pass to DetailFragment
-            sharedViewModel.setSelectedItem(selectedData)
-            // Navigate to DetailFragment
-            val detailFragment = DetailFragment()
+            sharedViewModel.setSelectedItem(selectedItem)
 
-            // Replace the current fragment with DetailFragment
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, detailFragment)
-                .addToBackStack(null)  // Add to back stack for back navigation
-                .commit()
+            view?.findNavController()?.navigate(R.id.action_lawFragment_to_detailFragment)
+
+
         }
     }
 }

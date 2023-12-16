@@ -36,6 +36,7 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
 }
 
 dependencies {
@@ -56,6 +57,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
+
     val room_version = "2.6.0"
     implementation("androidx.room:room-runtime:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
@@ -66,13 +68,4 @@ dependencies {
     // Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
 
-    // Navigation Component
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    // Optional - Safe Args (Fragment 간 전달할 데이터를 안전하게 처리)
-    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-
-    // Optional - Dynamic Feature Module 지원
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 }

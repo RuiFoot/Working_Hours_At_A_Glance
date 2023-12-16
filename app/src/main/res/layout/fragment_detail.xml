@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="viewModel" type="com.example.myapplication.ui.main.LawViewModel"/>
+        <variable name="viewModel" type="com.example.myapplication.ui.main.SharedViewModel"/>
     </data>
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,14 +16,14 @@
                     android:id="@+id/textViewMain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Main: "
+                    android:text="@{viewModel.selectedItem.main}"
                     android:textStyle="bold"
                     android:layout_weight="1"/>
             <TextView
                     android:id="@+id/textViewMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Middle: "
+                    android:text="@{viewModel.selectedItem.middle}"
                     android:textStyle="bold"
                     android:layout_weight="1"/>
         </LinearLayout>
@@ -32,7 +32,7 @@
                 android:id="@+id/textViewQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Question: "
+                android:text="@{viewModel.selectedItem.question}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
@@ -41,7 +41,7 @@
                 android:id="@+id/textViewAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Answer: "
+                android:text="@{viewModel.selectedItem.answer}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>

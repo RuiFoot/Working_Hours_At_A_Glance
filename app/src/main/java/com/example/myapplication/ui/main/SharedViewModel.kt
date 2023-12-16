@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 import androidx.lifecycle.LiveData
@@ -13,5 +14,6 @@ class SharedViewModel : ViewModel() {
 
     fun setSelectedItem(item: LawFAQ) {
         _selectedItem.value = item
+        Log.d("YourTag", "setSelectedItem called with item: $item")
     }
 }
